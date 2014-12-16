@@ -39,8 +39,9 @@ class PebBaseController(controller.CementBaseController):
 
 	@controller.expose(help = "Create new PHP-CPP project.")
 	def create(self):
+		self.check_install()
 		if create_extension_dir(self.app.pargs.name):
-			print("Directory successfully created.")
+			print("Directory \"%s\" successfully created." % self.app.pargs.name)
 		else:
 			print("Directory already exists.")
 
