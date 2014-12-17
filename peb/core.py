@@ -1,5 +1,5 @@
 from os.path import isfile, exists, dirname, abspath
-from os import mkdir
+from os import mkdir, getcwd
 
 def is_phpcpp_installed():
 
@@ -13,7 +13,7 @@ def is_phpcpp_installed():
 
 def create_extension_dir(ext_name):
 
-	path = "%s/%s/" % (dirname(abspath(__file__)), ext_name)
+	path = "%s/%s/" % (getcwd(), ext_name)
 
 	if not exists(path):
 		mkdir(path)
