@@ -1,5 +1,6 @@
-from os.path import isfile, exists, dirname, abspath
-from os import mkdir, getcwd
+from os.path import isfile, exists, dirname, abspath, join
+from os import mkdir, getcwd, listdir
+from shutil import copyfile
 
 def is_phpcpp_installed():
 
@@ -20,3 +21,12 @@ def create_extension_dir(ext_name):
 		return True
 	else:	
 		return False
+
+def copy_template_files(to):
+	
+	path = "%s/../ext/" % dirname(abspath(__file__))
+
+	files = [file for file in listdir(path) if isfile(join(path, file))]
+
+	for file in files:
+		copyfile(join(path, file), to)

@@ -18,12 +18,17 @@ class PebBaseController(controller.CementBaseController):
 	def check_install(self):
 		if peb.is_phpcpp_installed():
 			print("PHP-CPP is correctly installed.")
+			return True
 		else:
 			print("PHP-CPP is not installed on your machine.")
+			return False
 
 	@controller.expose(help = "Create new PHP-CPP project.")
 	def create(self):
-		self.check_install()
+		if not self.check_install():
+			print("Interrupting...")
+			return False
+
 		if peb.create_extension_dir(self.app.pargs.name):
 			print("Directory \"%s\" successfully created." % self.app.pargs.name)
 		else:
