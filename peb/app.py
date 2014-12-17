@@ -16,7 +16,7 @@ class PebBaseController(controller.CementBaseController):
 
 	@controller.expose(help = "Check if PHP-CPP library is installed.")
 	def check_install(self):
-		if peb.phpcpp_is_installed():
+		if peb.is_phpcpp_installed():
 			print("PHP-CPP is correctly installed.")
 		else:
 			print("PHP-CPP is not installed on your machine.")

@@ -1,7 +1,7 @@
 from os.path import isfile, exists, dirname, abspath
 from os import mkdir
 
-def phpcpp_is_installed():
+def is_phpcpp_installed():
 
 	files = ["/usr/include/phpcpp.h", "/usr/lib/libphpcpp.a", "/usr/lib/libphpcpp.so"]
 
