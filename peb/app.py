@@ -29,10 +29,15 @@ class PebBaseController(controller.CementBaseController):
 			print("Interrupting...")
 			return False
 
-		if peb.create_extension_dir(self.app.pargs.name):
-			print("Directory \"%s\" successfully created." % self.app.pargs.name)
+		name = self.app.pargs.name
+
+		if peb.create_extension_dir(name):
+			print("Directory \"%s\" successfully created." % name)
 		else:
-			print("Directory already exists.")
+			print("Directory \"%s\" already exists." % name)
+
+		print("Copying template files to \"%s\"..." % name)
+		peb.copy_template_files(name)
 
 class Peb(foundation.CementApp):
 	class Meta:

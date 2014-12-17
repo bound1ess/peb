@@ -29,4 +29,4 @@ def copy_template_files(to):
 	files = [file for file in listdir(path) if isfile(join(path, file))]
 
 	for file in files:
-		copyfile(join(path, file), to)
+		copyfile(join(path, file), "%s/%s/%s" % (getcwd(), to, file))
