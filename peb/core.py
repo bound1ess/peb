@@ -36,6 +36,7 @@ def change_ini_file(ext):
 	ext_dir = "%s/%s/" % (getcwd(), ext)
 	ini_file = ext_dir + ext + ".ini"
 	makefile = ext_dir + "Makefile"
+	main = ext_dir + "main.cpp"
 
 	rename(ext_dir + "extension.ini", ini_file)
 
@@ -48,3 +49,8 @@ def change_ini_file(ext):
 		contents = file.read()
 		with open(makefile, "w") as file:
 			file.write(contents.replace("NAME = extension", "NAME = " + ext))
+	
+	with open(main, "r") as file:
+		contents = file.read()
+		with open(main, "w") as file:
+			file.write(contents.replace("yourextension", ext))
