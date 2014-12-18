@@ -42,10 +42,12 @@ class PebBaseController(controller.CementBaseController):
 		print("Applying small changes...")
 		peb.change_ini_file(name)
 
-		print("All done, you are all set!")
+		print("All done, you are all good to go!")
+		self.install(name)
 
-	# add a command to build and install (deploy) extension ("deploy")
-	# it will execute "make", "make install", "php5enmod" and stuff
+	def install(self, ext_name):
+		print("Please run the following command in your terminal:")
+		print("make; sudo make install; sudo php5enmod " + ext_name)
 	
 class Peb(foundation.CementApp):
 	class Meta:
