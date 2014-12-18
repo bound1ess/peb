@@ -1,5 +1,5 @@
 from os.path import isfile, exists, dirname, abspath, join
-from os import mkdir, getcwd, listdir
+from os import mkdir, getcwd, listdir, rename
 from shutil import copyfile
 
 def is_phpcpp_installed():
@@ -30,3 +30,21 @@ def copy_template_files(to):
 
 	for file in files:
 		copyfile(join(path, file), "%s/%s/%s" % (getcwd(), to, file))
+
+def change_ini_file(ext):
+
+	ext_dir = "%s/%s/" % (getcwd(), ext)
+	ini_file = ext_dir + ext + ".ini"
+	makefile = ext_dir + "Makefile"
+
+	rename(ext_dir + "extension.ini", ini_file)
+
+	with open(ini_file, "r") as file:
+		contents = file.read()
+		with open(ini_file, "w") as file:
+			file.write(contents.replace("extension.so", ext + ".so"))
+	
+	with open(makefile, "r") as file:
+		contents = file.read()
+		with open(makefile, "w") as file:
+			file.write(contents.replace("NAME = extension", "NAME = " + ext))

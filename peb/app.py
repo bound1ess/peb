@@ -39,6 +39,14 @@ class PebBaseController(controller.CementBaseController):
 		print("Copying template files to \"%s\"..." % name)
 		peb.copy_template_files(name)
 
+		print("Applying small changes...")
+		peb.change_ini_file(name)
+
+		print("All done, you are all set!")
+
+	# add a command to build and install (deploy) extension ("deploy")
+	# it will execute "make", "make install", "php5enmod" and stuff
+	
 class Peb(foundation.CementApp):
 	class Meta:
 		label = "PEB"
