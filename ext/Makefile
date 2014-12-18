@@ -28,7 +28,7 @@ NAME = extension
 #	one for each extension. Use this variable to specify this directory.
 #
 
-INI_DIR = /etc/php5/conf.d
+INI_DIR = /etc/php5/mods-available
 
 #
 #	The extension dirs.
