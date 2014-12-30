@@ -3,7 +3,6 @@ from os import mkdir, getcwd, listdir, rename
 from shutil import copyfile
 
 def is_phpcpp_installed():
-
 	files = ["/usr/include/phpcpp.h", "/usr/lib/libphpcpp.a", "/usr/lib/libphpcpp.so"]
 
 	for file in files:
@@ -13,7 +12,6 @@ def is_phpcpp_installed():
 	return True
 
 def create_extension_dir(ext_name):
-
 	path = "%s/%s/" % (getcwd(), ext_name)
 
 	if not exists(path):
@@ -23,16 +21,13 @@ def create_extension_dir(ext_name):
 		return False
 
 def copy_template_files(to):
-	
 	path = "%s/../ext/" % dirname(abspath(__file__))
-
 	files = [file for file in listdir(path) if isfile(join(path, file))]
 
 	for file in files:
 		copyfile(join(path, file), "%s/%s/%s" % (getcwd(), to, file))
 
 def change_ini_file(ext):
-
 	ext_dir = "%s/%s/" % (getcwd(), ext)
 	ini_file = ext_dir + ext + ".ini"
 	makefile = ext_dir + "Makefile"
